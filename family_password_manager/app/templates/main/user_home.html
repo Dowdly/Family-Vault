@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Welcome, {{ user.username }}!</h1>
+    <p>This is your personalised home page.</p>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Retrieves token from local storage
+            var token = localStorage.getItem('token');
+            if (token) {
+                // Sends the token to the Chrome extension
+                chrome.runtime.sendMessage("ifpnnakcbofogpihgmjlemgnhffgeief", {token: token}, function(response) {
+                    console.log("Token sent to extension:", response);
+                });
+            }
+        });
+    </script>
+{% endblock %}

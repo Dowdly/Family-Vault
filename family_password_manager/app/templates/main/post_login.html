@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Successful</title>
+    <script>
+        // Script to send the JWT to the Chrome extension
+        document.addEventListener('DOMContentLoaded', function() {
+            const token = '{{ token }}';
+            chrome.runtime.sendMessage(extensionId, {type: "setToken", token: token}, function(response) {
+                console.log(response.status);
+            });
+
+            window.location.href = '/user_home';
+        });
+    </script>
+</head>
+<body>
+    <h1>Login Successful</h1>
+    <p>Redirecting...</p>
+</body>
+</html>

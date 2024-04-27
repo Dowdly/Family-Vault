@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="login-container">
+        <img src="{{ url_for('static', filename='images/icon.png') }}" alt="FamilyVault Logo" class="login-logo">
+        <h1 class="welcome-title">Welcome to FamilyVault</h1>
+        <h2 class="login-title">Your Family Focused Password Manager</h2>
+        <form id="loginForm" method="post" class="login-form">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.email.label }}
+                {{ form.email(size=32, id='email', class='form-control') }}
+            </div>
+            <div class="form-group">
+                {{ form.password.label }}
+                {{ form.password(size=32, id='password', class='form-control') }}
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+        <p class="register-link">
+            New here? <a href="{{ url_for('auth.register') }}">Register</a>
+        </p>
+    </div>
+{% endblock %}

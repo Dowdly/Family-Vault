@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FamilyVault</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body style="display: flex; flex-direction: column;">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="#" onclick="handleFamilyVaultClick()">
+                <img src="{{ url_for('static', filename='images/icon.png') }}" alt="FamilyVault Logo" style="height: 40px; margin-left: 5px;">
+                FamilyVault
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    {% if current_user.is_authenticated %}
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="navigateWithToken('/auth/user_profile')">Welcome {{ current_user.username }}!</a>
+
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="navigateWithToken('/passwords/manage-passwords')">Manage Passwords</a>
+                        </li>
+                        {% if current_user.is_authenticated and current_user.role == 'admin' %}                
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="navigateWithToken('/activity-log')">Activity Log</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="navigateWithToken('/auth/create-user')">Create User</a>
+                        </li>
+                    {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="navigateWithToken('/auth/logout')">Logout</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="navigateWithToken('/auth/login')">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="navigateWithToken('/auth/register')">Register</a>
+                        </li>
+                    {% endif %}
+                    
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mt-4" style="flex-grow: 1;">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2024 FamilyVault</p>
+        <div class="footer-links">
+           
+        </div>
+    </footer>
+
+    <button id="high-contrast-toggle" class="btn btn-secondary">
+        Toggle High Contrast
+    </button>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/passwords.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+
+    
+</body>
+</html>

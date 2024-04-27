@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>User Profile</h2>
+
+<form id="updateUsernameForm" method="post" action="{{ url_for('auth.user_profile') }}">
+    {{ update_username_form.hidden_tag() }}
+    <div>
+        <label for="username">New Username:</label>
+        {{ update_username_form.username }}
+    </div>
+    <button type="submit" class="btn btn-primary">Update Username</button>
+</form>
+
+<form id="updatePasswordForm" method="post" action="{{ url_for('auth.user_profile') }}">
+    {{ update_password_form.hidden_tag() }}
+    <div>
+        <label for="password">New Password:</label>
+        {{ update_password_form.password }}
+    </div>
+    <button type="submit" class="btn btn-primary">Update Password</button>
+</form>
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<script type="text/javascript">
+    window.decryptedPasswords = {{ decrypted_passwords | tojson | safe }};
+</script>
+
+<h2>Manage Passwords</h2>
+<div class="manage-passwords-actions">
+    <a href="#" onclick="navigateWithToken('/passwords/add-password')" class="btn btn-primary">Add New Password</a>
+    <button type="button" onclick="deleteSelectedPasswords()" class="btn btn-danger">Delete Selected</button>
+</div>
+
+<!-- Import/Export Functionality -->
+<div class="manage-passwords-actions" style="margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+    <a href="/passwords/export-passwords" class="btn btn-primary" style="margin-right: 5px;">Export Passwords</a>
+    <form onsubmit="importPasswords(event)" style="display: flex; align-items: center; gap: 5px;">
+        <input type="file" id="importFile" accept=".csv" class="btn" style="max-width: 225px; flex-grow: 1;">
+        <button type="submit" class="btn">Import Passwords</button>
+    </form>
+</div>
+
+<!-- Sorting, Filtering, and Order Options -->
+<div class="manage-passwords-actions" style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+    <div>
+        <label for="sortSelect">Sort by:</label>
+        <select id="sortSelect" onchange="sortPasswords()">
+            <option value="name">Website Name</option>
+            <option value="username">Username</option>
+            <option value="category">Category</option>
+            <option value="date_added">Date Added</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="categoryFilter">Filter by Category:</label>
+        <select id="categoryFilter" onchange="filterByCategory()">
+            <option value="all">All</option>
+            {% for password in passwords %}
+                <option value="{{ password.category }}">{{ password.category }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div>
+        <label for="sortOrder">Order:</label>
+        <select id="sortOrder" onchange="sortPasswords()">
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+        </select>
+    </div>
+</div>
+
+<!-- Search Bar -->
+<div style="margin-bottom: 20px;">
+    <input type="text" id="searchInput" onkeyup="searchPasswords()" placeholder="Search passwords..." style="width: 100%; padding: 8px;">
+</div>
+
+<table id="passwordList">
+    <thead>
+        <tr>
+            <th>Select</th>
+            <th>Website Name</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for password in passwords %}
+        <tr id="password-{{ password.password_id }}" class="password-item" 
+            data-password-id="{{ password.password_id }}"
+            data-website-name="{{ password.website_name }}"
+            data-username="{{ password.username }}"
+            data-category="{{ password.category }}"
+            data-date-added="{{ password.date_added.isoformat() }}">
+            <td><input type="checkbox" class="password-checkbox" value="{{ password.password_id }}"></td>
+            <td>{{ password.website_name }}</td>
+            <td>{{ password.username }}</td>
+            <td>
+                <div class="password-container">
+                    <input type="password" class="password-value" readonly style="border: 1px solid #ccc; background-color: #fff; padding: 8px 15px;">
+                    <i class="fas fa-eye password-toggle" onclick="togglePasswordVisibility('{{ password.password_id }}', 'manage')"></i>
+                </div>
+            </td>
+            <td>
+                <a href="#" onclick="navigateWithToken('/passwords/edit-password/{{ password.password_id }}')" class="btn btn-info">Edit</a>
+                <button type="button" onclick="deletePassword('{{ password.password_id }}')" class="btn btn-warning">Delete</button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<script src="{{ url_for('static', filename='js/passwords.js') }}"></script>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+{% endblock %}

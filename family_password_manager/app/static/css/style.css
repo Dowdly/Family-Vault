@@ -1,0 +1,517 @@
+/* Updated Color Scheme */
+:root {
+  --primary-color: #5b8def;
+  --secondary-color: #6c757d;
+  --background-color: #f8f9fa;
+  --text-color: #333;
+  --high-contrast-bg: #000;
+  --high-contrast-text: #fff;
+  --card-border: #ccc;
+  --btn-background: #50b3a2;
+  --btn-hover: #488477;
+  --navbar-bg: #2a3f54;
+  --footer-bg: #2a3f54;
+  --navbar-btn-bg: #4a6f8c;
+  --navbar-btn-text: #ffffff;
+  --import-btn-border: #4a6f8c;
+}
+
+/* Base Styles */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%; /* Ensures the body covers the full width */
+}
+
+html {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: "Arial", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+body.high-contrast {
+  background-color: var(--high-contrast-bg);
+  color: var(--high-contrast-text);
+}
+a,
+button,
+.btn {
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+a:hover,
+button:hover,
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Header and Footer */
+header,
+footer {
+  padding: 15px;
+  background-color: var(--navbar-bg);
+  color: white;
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+  padding: 15px 0;
+}
+
+main {
+  flex-grow: 1; /* Allows the main content to push the footer down */
+}
+
+/* Footer Styles */
+footer {
+  background-color: var(--footer-bg);
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+footer p,
+footer a {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 10px;
+}
+
+footer a:hover {
+  color: #fff;
+}
+
+/* Navigation Bar */
+nav {
+  background-color: var(--navbar-bg);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+nav ul li a {
+  color: var(--navbar-btn-text);
+  background-color: var(--navbar-btn-bg);
+  border-radius: 4px;
+  padding: 5px 10px;
+}
+
+nav ul li a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.manage-passwords-actions button.btn-danger {
+  margin-bottom: 10px;
+}
+
+/* Makes text on navbar buttons white */
+nav .navbar-nav .nav-item .nav-link {
+  background-color: lighten(var(--navbar-bg), 10%);
+  color: white;
+}
+/* Even lighter on hover */
+nav .navbar-nav .nav-item .nav-link:hover {
+  background-color: lighten(var(--navbar-bg), 5%);
+  color: white;
+}
+
+/* Content Styling */
+.container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+/* Card Styles */
+.card {
+  background-color: #fff;
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin: 10px;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Button Styles */
+button,
+.btn,
+input[type="submit"],
+input[type="file"] {
+  background-color: var(--btn-background);
+  color: white;
+  border: 2px solid transparent;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: var(--navbar-bg);
+  border-color: var(--navbar-bg);
+  color: white;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #1d2c3d;
+  border-color: #1d2c3d;
+  color: white;
+}
+
+/* Specific targeting for Add New Password and Export Passwords buttons */
+.manage-passwords-actions .btn-primary {
+  background-color: var(--navbar-bg);
+  border-color: var(--navbar-bg);
+  color: white;
+}
+
+.manage-passwords-actions .btn-primary:hover {
+  background-color: #1d2c3d;
+  border-color: #1d2c3d;
+}
+
+/* Import Passwords Button Specific */
+form button[type="submit"] {
+  background-color: var(--navbar-bg);
+  color: white;
+  border: 2px solid transparent;
+}
+
+button:hover,
+.btn:hover,
+input[type="submit"]:hover {
+  background-color: #4a6f8c;
+}
+
+input[type="file"] {
+  color: white;
+  background-color: var(--navbar-bg);
+  padding: 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover,
+.btn:hover,
+input[type="submit"]:hover,
+input[type="file"]:hover,
+.manage-passwords-actions .btn-primary:hover,
+form button[type="submit"]:hover {
+  background-color: var(--btn-hover);
+  color: white;
+}
+
+/* Fix for overlapping buttons */
+.manage-passwords-actions a,
+.manage-passwords-actions button {
+  margin-right: 10px;
+}
+
+input[type="file"]:hover {
+  background-color: var(--btn-hover);
+  color: var(--high-contrast-text);
+}
+
+form button[type="submit"] {
+  border-color: var(--import-btn-border);
+}
+
+nav ul li a {
+  color: #fff;
+}
+
+.password-item .btn-info {
+  background-color: var(--navbar-bg);
+  border-color: var(--navbar-bg);
+  margin-right: 5px;
+}
+
+/* Adjusts Hover Effect for Edit Button */
+.password-item .btn-info:hover {
+  background-color: var(--btn-hover); 
+  color: white;
+  border-color: var(--btn-hover);
+}
+
+/* Style for Small Delete Button */
+.password-item .btn-warning {
+  background-color: #dc3545;
+  color: white;
+  border-color: #dc3545;
+}
+
+/* Correcting Hover State for Small Delete Button */
+.password-item .btn-warning:hover,
+.password-item .btn-warning:focus {
+  background-color: darken(
+    #dc3545,
+    10%
+  ) !important;
+  border-color: darken(#dc3545, 10%) !important;
+  color: white !important; 
+}
+
+.btn-warning:hover,
+.password-item .btn-warning:hover,
+.password-item .btn-warning:focus {
+  background-color: darken(
+    #dc3545,
+    10%
+  ) !important; 
+  border-color: darken(#dc3545, 10%) !important;
+  color: white !important;
+}
+/* Adds Gap Between Edit and Delete Buttons */
+.password-item .btn-info {
+  margin-bottom: 5px; 
+}
+
+.btn-warning:hover {
+  background-color: #c82333 !important; 
+  border-color: #bd2130 !important;
+  color: white !important;
+}
+
+/* Target the 'Create User' submit button */
+#createUserForm input[type="submit"] {
+  background-color: var(--navbar-bg); 
+  color: white;
+  border: 2px solid var(--navbar-bg);
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+#createUserForm input[type="submit"]:hover {
+  background-color: var(--btn-hover);
+  border-color: var(--btn-hover);
+}
+
+/* Styles the Export Activity Log button */
+a.btn-export-activity-log {
+  background-color: var(--navbar-bg); 
+  color: white;
+  border: 2px solid var(--navbar-bg);
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+a.btn-export-activity-log:hover {
+  background-color: var(--btn-hover); 
+  border-color: var(--btn-hover);
+}
+
+/* Hover state for Export Activity Log button */
+a.btn-export-activity-log:hover {
+  background-color: var(--btn-hover);
+  border-color: var(--btn-hover);
+  color: white;
+}
+
+/* Form Styles */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+select {
+  width: 100%;
+  padding: 10px 15px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+
+  .container {
+    padding: 15px;
+  }
+
+  nav ul li {
+    margin-right: 10px;
+  }
+
+  input[type="file"] {
+    max-width: 100%;
+  }
+
+  /* Stacks buttons  vertically on small screens */
+  .manage-passwords-actions,
+  .manage-passwords-actions div {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  /* Adjusts button elements to full width with screen size */
+  .manage-passwords-actions input,
+  .manage-passwords-actions select,
+  .manage-passwords-actions button,
+  .manage-passwords-actions .btn {
+    width: 100%;
+    margin: 5px 0; 
+  }
+
+  /* Ensures the table layout adjusts to small screens */
+  #passwordList th,
+  #passwordList td {
+    display: block;
+    width: 100%;
+  }
+
+  #passwordList th,
+  #passwordList td {
+    font-size: 14px;
+  }
+
+  nav ul li a {
+    padding: 10px; 
+  }
+
+  footer {
+    padding: 10px 0; 
+  }
+}
+
+/* Additional Styles */
+.password-container,
+.password-value,
+.password-toggle {
+}
+
+/* Accessibility Enhancements */
+#password-strength {
+  height: 5px;
+  width: 0%;
+  background-color: red;
+  transition: width 0.3s ease;
+}
+
+#strength-text {
+  font-size: 14px;
+  color: #333;
+  margin-top: 5px;
+}
+
+/* Floating Labels */
+.floating-label {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.floating-label input {
+  border-bottom: 2px solid var(--secondary-color);
+}
+
+.floating-label label {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  transition: all 0.3s ease;
+  color: var(--secondary-color);
+}
+
+.floating-label input:focus + label,
+.floating-label input:not(:placeholder-shown) + label {
+  bottom: 25px;
+  font-size: 0.8em;
+  color: var(--primary-color);
+}
+
+.tooltip-inner {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.login-container {
+  max-width: 400px;
+  margin: 30px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.login-logo {
+  max-width: 100px; 
+  margin-bottom: 20px;
+}
+
+.welcome-title {
+  font-size: 24px; 
+  margin-bottom: 5px;
+}
+
+.login-title {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.login-form .form-group {
+  margin-bottom: 15px;
+}
+
+.register-link {
+  margin-top: 20px;
+}
+
+/* High Contrast Toggle Button */
+#high-contrast-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
