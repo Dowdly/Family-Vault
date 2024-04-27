@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../family_password_manager"
+		},
+		{
+			"path": "../venv"
+		}
+	]
+}

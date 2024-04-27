@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Save Password</title>
+    <style>
+        .slider-container {
+            margin: 10px 0;
+        }
+        #passwordGenerator, #logoutButton, #savePasswordManually, #fetchCurrentUrl, #passwordStrength {
+            display: none;
+        }
+        #passwordStrength {
+            color: green;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Family Password Manager</h1>
+    <div id="welcomeMessage" style="display: none;"></div>
+    <div id="loginForm">
+        <input type="email" id="email" placeholder="Email">
+        <input type="password" id="password" placeholder="Password">
+        <button id="loginButton">Login</button>
+    </div>
+    <button id="logoutButton" style="display: none;">Logout</button>
+    <div id="passwordGenerator" style="display: none;">
+        <h2>Password Generator</h2>
+        <input type="text" id="generatedPassword" readonly>
+        <div class="slider-container">
+            <input type="range" min="8" max="20" value="12" class="slider" id="passwordLength">
+            <span id="lengthDisplay">12</span> characters
+        </div>
+        <div id="passwordStrength"></div>
+        <button id="copyButton">Copy</button>
+    </div>
+    <button id="savePasswordManually" style="display: none;">Save Password Manually</button>
+    <button id="fetchCurrentUrl" style="display: none;">Fetch Current URL</button>
+    <script src="popup.js"></script>
+</body>
+</html>

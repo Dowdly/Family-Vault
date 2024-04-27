@@ -1,0 +1,24 @@
+{
+    "manifest_version": 3,
+    "name": "FamilyVault Password Manager",
+    "version": "1.0",
+    "permissions": [
+        "storage"
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": "icon.png"
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["content.js"]
+        }
+    ],
+    "host_permissions": [
+        "https://3e4c-84-203-55-131.ngrok-free.app/*"
+    ]
+}
