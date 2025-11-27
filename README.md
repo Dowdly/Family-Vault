@@ -1,6 +1,6 @@
 # FamilyVault 🔐
 
-**A centralised password mincludinganager designed specifically for families, featuring parental oversight, activity logging, and a complementary Chrome Extension.**
+**A centralised password application designed specifically for families, featuring parental oversight, activity logging, and a complementary Chrome Extension.**
 
 ---
 
