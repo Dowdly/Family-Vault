@@ -1,6 +1,6 @@
 # FamilyVault 🔐
 
-**A centralised password manager designed specifically for families, featuring parental oversight, activity logging, and a complementary Chrome Extension.**
+**A centralised password mincludinganager designed specifically for families, featuring parental oversight, activity logging, and a complementary Chrome Extension.**
 
 ---
 
@@ -151,7 +151,3 @@ python app.py
     [ ] Cross-Browser Support: Support for Firefox and Safari.
     [ ] Mobile App: Native iOS/Android application.
     [ ] Advanced Form Heuristics: Improved detection for non-standard login forms.
-
-👏 Acknowledgments
-
-This project was developed as a final year software engineering project. Special thanks to my supervisor, Paul Laird, for his expertise and guidance on the browser extension architecture.
